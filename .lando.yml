@@ -1,0 +1,4 @@
+name: codecore-react
+recipe: lamp
+config:
+  webroot: .
