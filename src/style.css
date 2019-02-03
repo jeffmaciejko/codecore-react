@@ -73,9 +73,37 @@ body {
 
 .LikesButton {
     text-align: right;
-    background: #d8ae64;
     border: none;
     color: white;
+    opacity: 0.5;
+    filter: grayscale(1);
+    outline: none;
+    cursor: pointer;
+    transform: scale(1);
+    transition: all 0.25s ease-in-out;
+    background: transparent;
+}
+
+.LikesButton:hover {
+    transform: scale(1.25);
+    opacity: 1;
+    transition: all 0.25s ease-in-out;
+}
+
+
+.LikesButton.is-liked {
+    opacity: 1;
+    transform: scale(1.5);
+    filter: grayscale(0);
+}
+
+.ImageTitle {
+    float: right;
+    font-size: 20px;
+    color: #F65C64;
+    font-weight: bold;
+    margin-top: 19px;
+    margin-right: 20px;
 }
 
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */

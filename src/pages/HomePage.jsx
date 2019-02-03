@@ -21,11 +21,34 @@ import ImageUploaderForm from '../components/ImageUploaderForm';
 import FeedList from '../components/FeedList';
 
 class HomePage extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = { 
+			photos: data.photos
+		}
+	}
+
+	newPhoto = ({url = '', title = ''}) => {
+		const newData = {
+			id: this.state.photos.length + 1,
+			title : title,
+			url : url,
+			likes : 0,
+			userLiked : false
+		}
+		const updatedData = [newData, ...this.state.photos];
+		this.setState(
+			{
+				photos: updatedData
+			}
+		)
+	}
+
 	render() {
-		const { photos } = data;
+		const { photos } = this.state;
 		return(
 			<div className="HomePage">
-				<ImageUploaderForm />
+				<ImageUploaderForm newPhoto={this.newPhoto} />
 				<FeedList photos={photos} />
 			</div>
 		)

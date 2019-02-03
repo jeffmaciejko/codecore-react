@@ -15,12 +15,17 @@ import FeedItem from './FeedItem';
 class FeedList extends React.Component {
 	render() {
 		const { photos } = this.props;
-		const createFeedItem = photos.map(photo=> 
-			<FeedItem url={photo.url} key={photo.id} title={photo.title} likes={photo.likes}/>
-		)
 		return(
 			<div className="FeedList">
-				{createFeedItem}
+				{photos.map( ({ url, id, title, likes, userLiked })=> 
+				<FeedItem 
+					url={url} 
+					key={id} 
+					title={title} 
+					likes={likes}
+					userLiked={userLiked}
+				/>
+				)}
 			</div>
 		)
 	}

@@ -37,10 +37,38 @@
 import React from 'react';
 
 class ImageUploaderForm extends React.Component {
+    state = {
+        url: '',
+        title: ''
+    }
+
+    handleInputEntry = (keyname, event) => {
+        this.setState(
+            {
+                [keyname]: event.target.value
+            }
+        )
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        const { newPhoto } = this.props;
+        newPhoto(this.state);
+    }
+
     render() {
         return(
-            <form action="">
-                <input type="text"/>
+            <form action="" className="ImageUploaderForm" onSubmit={this.handleSubmit}>
+                <input 
+                type="url"
+                placeholder="Enter an image URL"
+                onChange={event => this.handleInputEntry('url', event)}
+                />
+                <input 
+                type="text"
+                placeholder="Enter an image Title"
+                onChange={event => this.handleInputEntry('title', event)}
+                />
                 <button className="Button">Image Upload</button>
             </form>
         )

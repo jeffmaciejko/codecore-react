@@ -21,13 +21,39 @@
 import React from 'react';
 
 class Likes extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = { 
+			userLiked: props.userLiked,
+			likes: props.likes
+		}
+	}
+	likeItem = () => {
+		this.setState(
+			{ userLiked: !this.state.userLiked }
+		)
+
+		let likeDirection = this.state.userLiked ? -1 : 1;
+		 this.setState(
+			{ likes: this.state.likes + likeDirection }
+		)
+	}
+
 	render() {
-		const { likes } = this.props;
+		const { userLiked, likes } = this.state;
+		let isLiked = this.state.userLiked ? 'is-liked' : '';
 		return(
 			<div className="Likes">
 				<span>
-					Likes: {likes}
-					<button className="LikeButton">Like</button>
+					<button 
+					className={`LikesButton ${isLiked}`} 
+					onClick={this.likeItem}
+					>
+					👍🏼
+					</button>
+					<span className="LikesCounter">
+						{this.state.likes}
+					</span>
 				</span>
 			</div>
 		)

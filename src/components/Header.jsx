@@ -14,13 +14,33 @@ import React from 'react';
 
 class Header extends React.Component {
     render() {
+        const headerItems = [
+            {
+                name: 'Catstagram',
+                myclass: 'Catstagram'
+            },
+            {
+                name: 'Home',
+                myclass: 'Home'
+            },
+            {
+                name: 'About',
+                myclass: 'About'
+            },
+            {
+                name: 'Profile',
+                myclass: 'Profile'
+            },
+            {
+                name: 'GDInsta',
+                myclass: 'Logo'
+            }
+        ]
         return(
             <ul className="Header">
-                <li className="Catstagram">Catstagram</li>
-                <li className="Home">Home</li>
-                <li className="About">About</li>
-                <li className="Profile">Profile</li>
-                <li className="Logo">GDInsta</li>
+            { headerItems.map( ({ name, myclass }, index) => (
+               <li key={index} className={myclass}>{name}</li> 
+            ) )}
             </ul>
         )
     }
